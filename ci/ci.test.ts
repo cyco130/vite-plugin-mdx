@@ -16,13 +16,13 @@ const browser = await puppeteer.launch({
 const pages = await browser.pages();
 const page = pages[0];
 
-const cases = ([{ framework: "React" }] as const)
-  .map((x) => [
-    { ...x, env: "development" } as const,
-    { ...x, env: "production" } as const,
-  ])
-  .flat();
-7;
+const cases = [
+  { framework: "React", env: "development" },
+  { framework: "React", env: "production" },
+  { framework: "React", env: "development" },
+  // @preact/preset-vite isn't Vite 3 compatible in production yet
+  // { framework: "React", env: "production" },
+] as const;
 
 describe.each(cases)("$framework - $env", ({ framework, env }) => {
   const dir = path.resolve(
@@ -32,18 +32,17 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
     framework.toLowerCase(),
   );
 
-  console.log(dir);
   let cp: ChildProcess;
 
   beforeAll(async () => {
-    // await kill(5173, "tcp").catch(() => {
-    //   // Do nothing
-    // });
+    await kill(5173, "tcp").catch(() => {
+      // Do nothing
+    });
 
     const command =
       env === "development"
-        ? "pnpm run dev"
-        : "pnpm run build && pnpm run preview";
+        ? "pnpm exec vite serve --strictPort --port 5173"
+        : "pnpm exec vite build && pnpm exec vite preview --strictPort --port 5173";
 
     cp = spawn(command, {
       shell: true,
@@ -69,7 +68,6 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
   }, 60_000);
 
   test("renders MDX", async () => {
-    console.log("Testing");
     await page.goto(TEST_HOST + "/");
     await page.waitForFunction(
       (framework) => document.body.innerText.includes(`Hello ${framework}!`),
@@ -92,10 +90,7 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
         () => document.querySelector("button")?.textContent === "Clicked: 1",
       );
 
-      const filePath = path.resolve(
-        __dirname,
-        `../examples/${framework.toLowerCase()}/src/Sample.mdx`,
-      );
+      const filePath = path.resolve(dir, "src/Sample.mdx");
       const oldContent = await fs.promises.readFile(filePath, "utf8");
       const newContent = oldContent.replace("Hello", "Hot reloadin'");
 

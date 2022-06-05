@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [
-    // This should come _before_ plugin-reactpnpm dev
+    // This should come _before_ plugin-react
     mdx(),
     react(),
   ],
