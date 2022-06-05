@@ -19,9 +19,9 @@ const page = pages[0];
 const cases = [
   { framework: "React", env: "development" },
   { framework: "React", env: "production" },
-  { framework: "React", env: "development" },
+  { framework: "Preact", env: "development" },
   // @preact/preset-vite isn't Vite 3 compatible in production yet
-  // { framework: "React", env: "production" },
+  // { framework: "Preact", env: "production" },
 ] as const;
 
 describe.each(cases)("$framework - $env", ({ framework, env }) => {

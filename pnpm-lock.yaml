@@ -20,14 +20,14 @@ importers:
       node-fetch: ^3.2.5
       puppeteer: ^14.2.1
       typescript: ^4.6.4
-      vitest: ^0.13.1
+      vitest: ^0.14.0
     dependencies:
       "@types/node": 17.0.40
       kill-port: 2.0.0
       node-fetch: 3.2.5
       puppeteer: 14.2.1
       typescript: 4.7.3
-      vitest: 0.13.1
+      vitest: 0.14.0
 
   examples/preact:
     specifiers:
@@ -5929,10 +5929,10 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.13.1:
+  /vitest/0.14.0:
     resolution:
       {
-        integrity: sha512-CfSBf7YFw/i8HumSUQRtZKs0aV91DC9WU8nAgIJAlawKHaFuPHQohDwOTPIFgrxySiuFYUa0Yohf9gDFfBwjxA==,
+        integrity: sha512-3Ns7c6TindS6OmweY4dU7sWT7g/YJBenwsMdUMEO/oS81bzoCEaA58vlg/9U1WRjrNFwQYsuyISehAvCKwoMZQ==,
       }
     engines: { node: ">=v14.16.0" }
     hasBin: true
