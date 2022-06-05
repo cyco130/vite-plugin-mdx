@@ -77,9 +77,8 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
     );
   });
 
-  test.skipIf(env !== "development")(
-    "hot reloads page",
-    async () => {
+  if (env === "development") {
+    test("hot reloads page", async () => {
       await page.goto(TEST_HOST);
 
       const button: ElementHandle<HTMLButtonElement> =
@@ -95,6 +94,10 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
       const oldContent = await fs.promises.readFile(filePath, "utf8");
       const newContent = oldContent.replace("Hello", "Hot reloadin'");
 
+      if (process.platform === "win32") {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+
       await fs.promises.writeFile(filePath, newContent);
 
       try {
@@ -108,9 +111,8 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
       } finally {
         await fs.promises.writeFile(filePath, oldContent);
       }
-    },
-    60_000,
-  );
+    }, 60_000);
+  }
 
   afterAll(async () => {
     await kill(5173, "tcp").catch(() => {
