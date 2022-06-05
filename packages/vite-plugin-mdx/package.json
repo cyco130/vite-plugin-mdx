@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "version": "0.0.0-TODO",
+  "name": "@cyco130/vite-plugin-mdx",
+  "version": "0.0.0",
   "type": "module",
   "files": [
     "dist",
@@ -16,23 +16,29 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "prepack": "rm -rf dist && pnpm build",
-    "test": "pnpm test:typecheck && pnpm test:lint && pnpm test:unit",
-    "test:unit": "vitest run",
+    "test": "pnpm test:typecheck && pnpm test:lint",
     "test:typecheck": "tsc -p tsconfig.json --noEmit",
     "test:lint": "eslint . --max-warnings 0 --ignore-pattern dist"
   },
-  "description": "TODO",
+  "description": "Vite plugin for using MDX",
   "license": "MIT",
-  "repository": "https://github.com/TODO/TODO",
+  "repository": "https://github.com/cyco130/vite-plugin-mdx",
   "keywords": [
-    "TODO"
+    "vite",
+    "mdx"
   ],
   "devDependencies": {
     "@cyco130/eslint-config": "^1.0.0",
+    "@types/node": "^17.0.39",
     "eslint": "^8.10.0",
     "tsup": "^6.0.1",
     "typescript": "^4.7.3",
-    "@types/node": "^17.0.39",
-    "vitest": "^0.13.1"
+    "vite": "3.0.0-alpha.9"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^2.1.1",
+    "@rollup/pluginutils": "^4.2.1",
+    "source-map": "^0.7.4",
+    "vfile": "^5.3.2"
   }
 }
