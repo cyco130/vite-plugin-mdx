@@ -2,7 +2,7 @@
 
 This is a plugin for using [MDX](https://mdxjs.com/) in [Vite](https://vitejs.dev/) applications.
 
-** This plugin requires Vite v3 which is currently in alpha. **
+**This plugin requires Vite v3 which is currently in alpha.**
 
 ## Why not use [`@mdx-js/rollup`](https://mdxjs.com/packages/rollup/)?
 
@@ -12,8 +12,8 @@ This is a plugin for using [MDX](https://mdxjs.com/) in [Vite](https://vitejs.de
 
 ## Examples
 
-- [React](../../examples/react) ([StackBlitz](<(https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/react)>))
-- [Preact](../../examples/preact) ([StackBlitz](<(https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/preact)>)) **NOTE:** `@preact/preset-vite` isn't Vite 3 compatible in production yet, so this only works in development mode for now.
+- [React](../../examples/react) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/react))
+- [Preact](../../examples/preact) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/preact)) **NOTE:** `@preact/preset-vite` isn't Vite 3 compatible in production yet, so this only works in development mode for now.
 
 ## Credits
 

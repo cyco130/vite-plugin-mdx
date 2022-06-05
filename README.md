@@ -2,7 +2,7 @@
 
 This is a plugin for using [MDX](https://mdxjs.com/) in [Vite](https://vitejs.dev/) applications.
 
-** This plugin requires Vite v3 which is currently in alpha. **
+**This plugin requires Vite v3 which is currently in alpha.**
 
 ## Why not use [`@mdx-js/rollup`](https://mdxjs.com/packages/rollup/)?
 
