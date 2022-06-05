@@ -1,9 +1,8 @@
 import type { CompileOptions } from "@mdx-js/mdx";
-import { createFormatAwareProcessors } from "@mdx-js/mdx/lib/util/create-format-aware-processors.js";
 import { Plugin } from "vite";
 import { FilterPattern, createFilter } from "@rollup/pluginutils";
 import { SourceMapGenerator } from "source-map";
-import { VFile } from "vfile";
+import type { VFile, VFileCompatible } from "vfile";
 
 export interface Options extends CompileOptions {
   /**
@@ -17,12 +16,23 @@ export interface Options extends CompileOptions {
 }
 
 export default function mdxPlugin(options: Options = {}): Plugin {
+  let extnames: string[];
+  let process: (vfileCompatible: VFileCompatible) => Promise<VFile>;
+
+  const createFormatAwareProcessorsPromise = import(
+    "@mdx-js/mdx/lib/util/create-format-aware-processors.js"
+  ).then(async ({ createFormatAwareProcessors }) => {
+    const processor = createFormatAwareProcessors({
+      SourceMapGenerator,
+      ...rest,
+    });
+
+    extnames = processor.extnames;
+    process = processor.process;
+  });
+
   options.jsx ??= true;
   const { include, exclude, ...rest } = options;
-  const { extnames, process } = createFormatAwareProcessors({
-    SourceMapGenerator,
-    ...rest,
-  });
   const filter = createFilter(include, exclude);
 
   return {
@@ -31,6 +41,8 @@ export default function mdxPlugin(options: Options = {}): Plugin {
     enforce: "pre",
 
     async resolveId(id, importer, options) {
+      await createFormatAwareProcessorsPromise;
+
       const { name, query } = parseId(id);
       const extname = name.match(/\.([^.]+)$/)?.[1];
       if (extname && extnames.includes("." + extname)) {
@@ -44,6 +56,7 @@ export default function mdxPlugin(options: Options = {}): Plugin {
 
     async transform(code, id) {
       const name = id.split("?", 1)[0];
+      const { VFile } = await import("vfile");
       const file = new VFile({ value: code, path: name });
 
       if (
