@@ -1,8 +1,9 @@
 import type { CompileOptions } from "@mdx-js/mdx";
-import { Plugin } from "vite";
+import { Plugin, ResolvedConfig } from "vite";
 import { FilterPattern, createFilter } from "@rollup/pluginutils";
 import { SourceMapGenerator } from "source-map";
 import type { VFile, VFileCompatible } from "vfile";
+import fs from "fs";
 
 export interface Options extends CompileOptions {
   /**
@@ -40,17 +41,58 @@ export default function mdxPlugin(options: Options = {}): Plugin {
 
     enforce: "pre",
 
+    config() {
+      // A minimal ESBuild plugin to allow optimizedDeps scanning
+      const esbuildOptions: ResolvedConfig["optimizeDeps"]["esbuildOptions"] = {
+        plugins: [
+          {
+            name: "mdx",
+            setup(build) {
+              build.onLoad({ filter: /\.mdx?$/ }, async (args) => {
+                await createFormatAwareProcessorsPromise;
+                const contents = await fs.promises.readFile(args.path, "utf8");
+
+                const compiled = await process(contents);
+
+                return {
+                  contents: String(compiled.value),
+                  loader: "jsx",
+                };
+              });
+            },
+          },
+        ],
+      };
+
+      return {
+        optimizeDeps: {
+          esbuildOptions,
+        },
+        ssr: {
+          optimizeDeps: {
+            esbuildOptions,
+          },
+        },
+      };
+    },
+
     async resolveId(id, importer, options) {
       await createFormatAwareProcessorsPromise;
 
-      const { name, query } = parseId(id);
-      const extname = name.match(/\.([^.]+)$/)?.[1];
-      if (extname && extnames.includes("." + extname)) {
-        return this.resolve(
-          name + query + (query ? "&" : "?") + "ext=.jsx",
-          importer,
-          { ...options, skipSelf: true },
-        );
+      const { name, searchParams } = parseId(id);
+      const extname = name.match(/(\.[^.]+)$/)?.[1];
+      if (extname && extnames.includes(extname)) {
+        // Make sure ext=.jsx is at the very end
+        searchParams.delete("ext");
+        searchParams.set("ext", ".jsx");
+        const query = "?" + searchParams.toString();
+
+        const resolved = await this.resolve(name + query, importer, {
+          ...options,
+          skipSelf: true,
+        });
+
+        return resolved;
       }
     },
 
@@ -89,6 +131,6 @@ function parseId(id: string) {
 
   return {
     name,
-    query: query && "?" + query,
+    searchParams: new URLSearchParams(query),
   };
 }
