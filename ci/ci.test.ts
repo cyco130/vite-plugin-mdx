@@ -21,8 +21,7 @@ const cases = [
   { framework: "React", env: "production" },
 
   { framework: "Preact", env: "development" },
-  // TODO: @preact/preset-vite isn't Vite 3 compatible in production yet
-  // { framework: "Preact", env: "production" },
+  { framework: "Preact", env: "production" },
 ] as const;
 
 describe.each(cases)("$framework - $env", ({ framework, env }) => {
@@ -82,7 +81,7 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
       await page.goto(TEST_HOST);
 
       const button: ElementHandle<HTMLButtonElement> =
-        await page.waitForSelector("button");
+        (await page.waitForSelector("button"))!;
 
       await button.click();
 
