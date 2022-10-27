@@ -6,9 +6,7 @@ export default defineConfig({
   plugins: [
     // This should come _before_ preact
     mdx({
-      jsxRuntime: "classic",
-      pragma: "preact.createElement",
-      pragmaFrag: "preact.Fragment",
+      jsx: true,
     }),
     preact(),
   ],
