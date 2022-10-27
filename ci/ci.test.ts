@@ -22,6 +22,9 @@ const cases = [
 
   { framework: "Preact", env: "development" },
   { framework: "Preact", env: "production" },
+
+  { framework: "Solid", env: "development" },
+  { framework: "Solid", env: "production" },
 ] as const;
 
 describe.each(cases)("$framework - $env", ({ framework, env }) => {

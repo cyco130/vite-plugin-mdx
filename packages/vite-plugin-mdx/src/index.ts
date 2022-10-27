@@ -32,7 +32,6 @@ export default function mdxPlugin(options: Options = {}): Plugin {
     process = processor.process;
   });
 
-  options.jsx ??= true;
   const { include, exclude, ...rest } = options;
   const filter = createFilter(include, exclude);
 
