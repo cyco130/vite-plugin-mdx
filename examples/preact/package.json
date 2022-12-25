@@ -9,12 +9,13 @@
     "start": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.11.2"
+    "preact": "^10.11.3"
   },
   "devDependencies": {
-    "@cyco130/vite-plugin-mdx": "0.0.2",
-    "@preact/preset-vite": "^2.4.0",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.8"
+    "@babel/core": "^7.20.7",
+    "@cyco130/vite-plugin-mdx": "0.0.3",
+    "@preact/preset-vite": "^2.5.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.3"
   }
 }
