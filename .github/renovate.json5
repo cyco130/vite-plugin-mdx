@@ -11,7 +11,7 @@
       enabled: false,
     },
     {
-      depTypeList: ["vfile"],
+      matchPackageNames: ["vfile"],
       allowedVersions: "5.0.0",
     },
   ],
