@@ -10,9 +10,8 @@
       depTypeList: ["peerDependencies"],
       enabled: false,
     },
-    // Has to match what's in @mdx-js/rollup-plugin
     {
-      vfile: ["node"],
+      depTypeList: ["vfile"],
       allowedVersions: "5.0.0",
     },
   ],
