@@ -3,7 +3,7 @@ import { Plugin, ResolvedConfig } from "vite";
 import { FilterPattern, createFilter } from "@rollup/pluginutils";
 import { SourceMapGenerator } from "source-map";
 import type { VFile, VFileCompatible } from "vfile";
-import fs from "fs";
+import fs from "node:fs";
 
 export interface Options extends CompileOptions {
   /**

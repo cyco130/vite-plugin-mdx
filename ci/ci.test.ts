@@ -9,7 +9,7 @@ import kill from "kill-port";
 const TEST_HOST = "http://localhost:5173";
 
 const browser = await puppeteer.launch({
-  // headless: false,
+  headless: "new",
   defaultViewport: { width: 1200, height: 800 },
 });
 
