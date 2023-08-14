@@ -102,8 +102,8 @@ importers:
         specifier: 0.0.3
         version: link:../../packages/vite-plugin-mdx
       solid-jsx:
-        specifier: ^0.9.1
-        version: 0.9.1(solid-js@1.7.11)
+        specifier: ^1.1.4
+        version: 1.1.4(solid-js@1.7.11)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -4756,11 +4756,11 @@ packages:
       csstype: 3.1.2
       seroval: 0.5.1
 
-  /solid-jsx@0.9.1(solid-js@1.7.11):
-    resolution: {integrity: sha512-HHTx58rx3tqg5LMGuQnaE1vqZjpl+RMP0jYQnBkTY0xKIASVNSLZJCZoPFrpKH8wWWYyTLHdepgzs8u/e6yz5Q==}
-    engines: {node: '>=10'}
+  /solid-jsx@1.1.4(solid-js@1.7.11):
+    resolution: {integrity: sha512-A4E9cB+wZpHZrXzv3+OWr6zaGS0FjD/UAKqbI38R1JwogjlBXdSGC2PgaIMisnGYKL3oJ55FPLv4QRkENmdbWQ==}
+    engines: {node: '>=16'}
     peerDependencies:
-      solid-js: ^1.4.0
+      solid-js: '>=1.4.0'
     dependencies:
       solid-js: 1.7.11
     dev: true
