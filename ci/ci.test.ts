@@ -4,9 +4,13 @@ import path from "path";
 import fs from "fs";
 import { spawn, ChildProcess } from "child_process";
 import fetch from "node-fetch";
-import kill from "kill-port";
+import psTreeCb from "ps-tree";
+import { promisify } from "util";
+import { kill } from "process";
 
-const TEST_HOST = "http://localhost:5173";
+const psTree = promisify(psTreeCb);
+
+const TEST_HOST = "http://localhost:5174";
 
 const browser = await puppeteer.launch({
   headless: "new",
@@ -35,17 +39,13 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
     framework.toLowerCase(),
   );
 
-  let cp: ChildProcess;
+  let cp: ChildProcess | undefined;
 
   beforeAll(async () => {
-    await kill(5173, "tcp").catch(() => {
-      // Do nothing
-    });
-
     const command =
       env === "development"
-        ? "pnpm exec vite serve --strictPort --port 5173"
-        : "pnpm exec vite build && pnpm exec vite preview --strictPort --port 5173";
+        ? "pnpm exec vite serve --strictPort --port 5174"
+        : "pnpm exec vite build && pnpm exec vite preview --strictPort --port 5174";
 
     cp = spawn(command, {
       shell: true,
@@ -53,22 +53,61 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
       cwd: dir,
     });
 
-    // Wait until server is ready
-    await new Promise<void>((resolve) => {
-      const interval = setInterval(() => {
-        fetch(TEST_HOST)
+    // eslint-disable-next-line no-async-promise-executor
+    await new Promise<void>(async (resolve, reject) => {
+      cp!.on("error", (error) => {
+        cp = undefined;
+        reject(error);
+      });
+
+      cp!.on("exit", (code) => {
+        if (code !== 0) {
+          cp = undefined;
+          reject(new Error(`Process exited with code ${code}`));
+        }
+      });
+
+      for (;;) {
+        let doBreak = false;
+        await fetch(TEST_HOST)
           .then(async (r) => {
             if (r.status === 200) {
-              clearInterval(interval);
               resolve();
+              doBreak = true;
             }
           })
           .catch(() => {
             // Ignore error
           });
-      }, 250);
+
+        if (doBreak) {
+          break;
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 250));
+      }
+    }).catch((error) => {
+      console.error(error);
+      process.exit(1);
     });
   }, 60_000);
+
+  afterAll(async () => {
+    if (!cp || cp.exitCode || !cp.pid) {
+      return;
+    }
+
+    const tree = await psTree(cp.pid);
+    const pids = [cp.pid, ...tree.map((p) => +p.PID)];
+
+    for (const pid of pids) {
+      kill(+pid, "SIGINT");
+    }
+
+    await new Promise((resolve) => {
+      cp!.on("exit", resolve);
+    });
+  });
 
   test("renders MDX", async () => {
     await page.goto(TEST_HOST + "/");
@@ -115,12 +154,6 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
       }
     }, 60_000);
   }
-
-  afterAll(async () => {
-    await kill(5173, "tcp").catch(() => {
-      // Do nothing
-    });
-  });
 });
 
 afterAll(async () => {
