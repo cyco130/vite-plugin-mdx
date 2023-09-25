@@ -1,7 +1,6 @@
 {
   "name": "example-preact-vite-plugin-mdx",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite serve",
