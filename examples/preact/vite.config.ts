@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
-import mdx from "@cyco130/vite-plugin-mdx";
+import { mdx } from "@cyco130/vite-plugin-mdx";
 
 export default defineConfig({
   plugins: [

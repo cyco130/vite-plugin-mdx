@@ -16,7 +16,7 @@ export interface Options extends CompileOptions {
   exclude?: FilterPattern;
 }
 
-export default function mdxPlugin(options: Options = {}): Plugin {
+export function mdx(options: Options = {}): Plugin {
   let extnames: string[];
   let process: (vfileCompatible: VFileCompatible) => Promise<VFile>;
 

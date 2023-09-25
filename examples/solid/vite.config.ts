@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
-import mdx from "@cyco130/vite-plugin-mdx";
+import { mdx } from "@cyco130/vite-plugin-mdx";
 
 export default defineConfig({
   plugins: [
