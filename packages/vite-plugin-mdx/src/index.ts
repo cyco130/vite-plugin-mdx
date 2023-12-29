@@ -2,8 +2,9 @@ import type { CompileOptions } from "@mdx-js/mdx";
 import { Plugin, ResolvedConfig } from "vite";
 import { FilterPattern, createFilter } from "@rollup/pluginutils";
 import { SourceMapGenerator } from "source-map";
-import type { VFile, VFileCompatible } from "vfile";
 import fs from "node:fs";
+import { createFormatAwareProcessors } from "@mdx-js/mdx/internal-create-format-aware-processors";
+import { VFile } from "vfile";
 
 export interface Options extends CompileOptions {
   /**
@@ -17,26 +18,17 @@ export interface Options extends CompileOptions {
 }
 
 export function mdx(options: Options = {}): Plugin {
-  let extnames: string[];
-  let process: (vfileCompatible: VFileCompatible) => Promise<VFile>;
+  const { include, exclude, ...rest } = options;
 
-  const createFormatAwareProcessorsPromise = import(
-    "@mdx-js/mdx/lib/util/create-format-aware-processors.js"
-  ).then(async ({ createFormatAwareProcessors }) => {
-    const processor = createFormatAwareProcessors({
-      SourceMapGenerator,
-      ...rest,
-    });
-
-    extnames = processor.extnames;
-    process = processor.process;
+  const { extnames, process } = createFormatAwareProcessors({
+    SourceMapGenerator,
+    ...rest,
   });
 
-  const { include, exclude, ...rest } = options;
   const filter = createFilter(include, exclude);
 
   return {
-    name: "@mdx-js/rollup",
+    name: "vite-plugin-mdx",
 
     enforce: "pre",
 
@@ -48,7 +40,6 @@ export function mdx(options: Options = {}): Plugin {
             name: "mdx",
             setup(build) {
               build.onLoad({ filter: /\.mdx?$/ }, async (args) => {
-                await createFormatAwareProcessorsPromise;
                 const contents = await fs.promises.readFile(args.path, "utf8");
 
                 const compiled = await process(contents);
@@ -76,8 +67,6 @@ export function mdx(options: Options = {}): Plugin {
     },
 
     async resolveId(id, importer, options) {
-      await createFormatAwareProcessorsPromise;
-
       const { name, searchParams } = parseId(id);
       const extname = name.match(/(\.[^.]+)$/)?.[1];
       if (extname && extnames.includes(extname)) {
@@ -97,7 +86,6 @@ export function mdx(options: Options = {}): Plugin {
 
     async transform(code, id) {
       const name = id.split("?", 1)[0];
-      const { VFile } = await import("vfile");
       const file = new VFile({ value: code, path: name });
 
       if (
