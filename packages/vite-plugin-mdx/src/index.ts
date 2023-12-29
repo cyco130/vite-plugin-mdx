@@ -1,6 +1,5 @@
 import type { CompileOptions } from "@mdx-js/mdx";
-import { Plugin, ResolvedConfig } from "vite";
-import { FilterPattern, createFilter } from "@rollup/pluginutils";
+import { Plugin, ResolvedConfig, createFilter, FilterPattern } from "vite";
 import { SourceMapGenerator } from "source-map";
 import fs from "node:fs";
 import { createFormatAwareProcessors } from "@mdx-js/mdx/internal-create-format-aware-processors";

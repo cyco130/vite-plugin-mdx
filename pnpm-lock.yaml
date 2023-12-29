@@ -121,9 +121,6 @@ importers:
       "@mdx-js/mdx":
         specifier: ^3.0.0
         version: 3.0.0
-      "@rollup/pluginutils":
-        specifier: ^5.1.0
-        version: 5.1.0
       source-map:
         specifier: ^0.7.4
         version: 0.7.4
@@ -1251,23 +1248,6 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
     dev: true
-
-  /@rollup/pluginutils@5.1.0:
-    resolution:
-      {
-        integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==,
-      }
-    engines: { node: ">=14.0.0" }
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      "@types/estree": 1.0.5
-      estree-walker: 2.0.2
-      picomatch: 2.3.1
-    dev: false
 
   /@rollup/rollup-android-arm-eabi@4.9.1:
     resolution:
@@ -3412,6 +3392,7 @@ packages:
       {
         integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==,
       }
+    dev: true
 
   /estree-walker@3.0.3:
     resolution:
@@ -6091,6 +6072,7 @@ packages:
         integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==,
       }
     engines: { node: ">=8.6" }
+    dev: true
 
   /pidtree@0.6.0:
     resolution:
