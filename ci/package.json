@@ -6,7 +6,7 @@
     "ci": "vitest --reporter=verbose run"
   },
   "dependencies": {
-    "@types/node": "^20.10.5",
+    "@types/node": "^20.10.6",
     "kill-port": "^2.0.1",
     "node-fetch": "^3.3.2",
     "ps-tree": "^1.2.0",
