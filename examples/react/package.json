@@ -12,7 +12,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@cyco130/vite-plugin-mdx": "1.0.4",
+    "@cyco130/vite-plugin-mdx": "1.0.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "4.3.0",
