@@ -6,11 +6,11 @@
     "ci": "vitest --reporter=verbose run"
   },
   "dependencies": {
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.5",
     "kill-port": "^2.0.1",
     "node-fetch": "^3.3.2",
     "ps-tree": "^1.2.0",
-    "puppeteer": "^22.10.0",
+    "puppeteer": "^22.11.1",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
   }

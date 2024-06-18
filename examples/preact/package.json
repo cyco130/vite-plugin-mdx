@@ -15,6 +15,6 @@
     "@cyco130/vite-plugin-mdx": "1.0.5",
     "@preact/preset-vite": "^2.8.2",
     "typescript": "^5.4.5",
-    "vite": "^5.2.12"
+    "vite": "^5.3.1"
   }
 }
