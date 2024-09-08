@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@cyco130/vite-plugin-mdx": "1.0.5",
+    "@cyco130/vite-plugin-mdx": "1.0.6",
     "@preact/preset-vite": "^2.9.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.3"

@@ -55,8 +55,8 @@ importers:
         specifier: ^7.25.2
         version: 7.25.2
       "@cyco130/vite-plugin-mdx":
-        specifier: 1.0.5
-        version: 1.0.5(vite@5.4.3(@types/node@22.5.4))
+        specifier: 1.0.6
+        version: link:../../packages/vite-plugin-mdx
       "@preact/preset-vite":
         specifier: ^2.9.0
         version: 2.9.0(@babel/core@7.25.2)(preact@10.23.2)(vite@5.4.3(@types/node@22.5.4))
@@ -77,8 +77,8 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       "@cyco130/vite-plugin-mdx":
-        specifier: 1.0.5
-        version: 1.0.5(vite@5.4.3(@types/node@22.5.4))
+        specifier: 1.0.6
+        version: link:../../packages/vite-plugin-mdx
       "@types/react":
         specifier: ^18.3.5
         version: 18.3.5
@@ -102,8 +102,8 @@ importers:
         version: 1.8.22
     devDependencies:
       "@cyco130/vite-plugin-mdx":
-        specifier: 1.0.5
-        version: 1.0.5(vite@5.4.3(@types/node@22.5.4))
+        specifier: 1.0.6
+        version: link:../../packages/vite-plugin-mdx
       solid-jsx:
         specifier: ^1.1.4
         version: 1.1.4(solid-js@1.8.22)
@@ -477,14 +477,6 @@ packages:
     peerDependencies:
       eslint: "8"
       typescript: "5"
-
-  "@cyco130/vite-plugin-mdx@1.0.5":
-    resolution:
-      {
-        integrity: sha512-H2OYTYzJcEHvTL1DIr2dOVrFACPfBZp7a4pJUZlQsOrf4PFYuEj7xclF4KcPuCRKrCjpkoG6bdsXA3YXCQxlKA==,
-      }
-    peerDependencies:
-      vite: 3 || 4 || 5
 
   "@esbuild/aix-ppc64@0.21.5":
     resolution:
@@ -5750,12 +5742,6 @@ packages:
         integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==,
       }
 
-  vfile@6.0.1:
-    resolution:
-      {
-        integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==,
-      }
-
   vfile@6.0.3:
     resolution:
       {
@@ -6351,15 +6337,6 @@ snapshots:
       - eslint-import-resolver-node
       - eslint-import-resolver-webpack
       - eslint-plugin-import-x
-      - supports-color
-
-  "@cyco130/vite-plugin-mdx@1.0.5(vite@5.4.3(@types/node@22.5.4))":
-    dependencies:
-      "@mdx-js/mdx": 3.0.1
-      source-map: 0.7.4
-      vfile: 6.0.1
-      vite: 5.4.3(@types/node@22.5.4)
-    transitivePeerDependencies:
       - supports-color
 
   "@esbuild/aix-ppc64@0.21.5":
@@ -9844,12 +9821,6 @@ snapshots:
     dependencies:
       "@types/unist": 3.0.2
       unist-util-stringify-position: 4.0.0
-
-  vfile@6.0.1:
-    dependencies:
-      "@types/unist": 3.0.2
-      unist-util-stringify-position: 4.0.0
-      vfile-message: 4.0.2
 
   vfile@6.0.3:
     dependencies:
