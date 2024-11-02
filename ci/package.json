@@ -9,11 +9,11 @@
     "kill-port": "^2.0.1",
     "node-fetch": "^3.3.2",
     "ps-tree": "^1.2.0",
-    "puppeteer": "^23.3.0",
-    "typescript": "^5.6.2",
-    "vitest": "^2.1.1"
+    "puppeteer": "^23.6.1",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
   },
   "devDependencies": {
-    "@types/node": "^22.5.4"
+    "@types/node": "^18.19.63"
   }
 }
