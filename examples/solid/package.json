@@ -11,7 +11,7 @@
     "solid-js": "^1.9.3"
   },
   "devDependencies": {
-    "@cyco130/vite-plugin-mdx": "1.0.7",
+    "@cyco130/vite-plugin-mdx": "2.1.6",
     "solid-jsx": "^1.1.4",
     "typescript": "^5.6.3",
     "vite": "^5.4.10",
