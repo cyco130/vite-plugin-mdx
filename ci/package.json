@@ -9,7 +9,7 @@
     "kill-port": "^2.0.1",
     "node-fetch": "^3.3.2",
     "ps-tree": "^1.2.0",
-    "puppeteer": "^23.9.0",
+    "puppeteer": "^24.4.0",
     "typescript": "^5.7.2",
     "vitest": "^2.1.6"
   },
