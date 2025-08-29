@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [
     // This should come _before_ solid
     mdx({ jsxImportSource: "solid-jsx" }),
-    solid(),
+    solid({ extensions: [".mdx"] }),
   ],
 });
