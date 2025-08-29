@@ -45,5 +45,9 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Disable AppArmor on Ubuntu
+        if: runner.os == 'Linux'
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+
       - name: Run CI tests
         run: pnpm run ci
