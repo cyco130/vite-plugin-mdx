@@ -13,6 +13,7 @@ const psTree = promisify(psTreeCb);
 const TEST_HOST = "http://localhost:5174";
 
 const browser = await puppeteer.launch({
+  headless: true,
   defaultViewport: { width: 1200, height: 800 },
 });
 
