@@ -14,10 +14,17 @@ export interface Options extends CompileOptions {
    * List of picomatch patterns to exclude
    */
   exclude?: FilterPattern;
+  /**
+   * Use legacy resolution for older versions of Vite and React/Preact/Solid
+   * plugins.
+   *
+   * @default false
+   */
+  legacyResolution?: boolean;
 }
 
 export function mdx(options: Options = {}): Plugin {
-  const { include, exclude, ...rest } = options;
+  const { include, exclude, legacyResolution = false, ...rest } = options;
 
   const { extnames, process } = createFormatAwareProcessors({
     SourceMapGenerator,
@@ -66,6 +73,8 @@ export function mdx(options: Options = {}): Plugin {
     },
 
     async resolveId(id, importer, options) {
+      if (!legacyResolution) return;
+
       const { name, searchParams } = parseId(id);
       const extname = name.match(/(\.[^.]+)$/)?.[1];
       if (extname && extnames.includes(extname)) {

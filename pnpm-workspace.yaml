@@ -1,4 +1,9 @@
 packages:
-  - "packages/*"
-  - "examples/*"
-  - "ci"
+  - packages/*
+  - examples/*
+  - ci
+
+onlyBuiltDependencies:
+  - esbuild
+  - puppeteer
+  - unrs-resolver
