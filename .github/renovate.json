@@ -7,16 +7,16 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
+      "matchManagers": ["github-actions"],
+      "rangeStrategy": "replace"
+    },
+    {
       "depTypeList": ["peerDependencies"],
       "enabled": false
     },
     {
-      "matchPackageNames": ["vfile"],
-      "allowedVersions": "5"
-    },
-    {
       "matchPackagePatterns": ["^@types/node$"],
-      "allowedVersions": "18"
+      "allowedVersions": "20"
     }
   ],
   "ignoreDeps": []

@@ -12,8 +12,13 @@ In some cases it can interfere with Vite's dependency scanning.
 
 ## Examples
 
+`@cyco130/vite-plugin-mdx` supports React and Preact out of the box:
+
 - [React](./examples/react) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/react))
 - [Preact](./examples/preact) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/preact))
+
+`@cyco130/vite-plugin-mdx` also supports Solid.js through the `solid-jsx` package:
+
 - [Solid](./examples/solid) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/solid))
 
 ## Credits

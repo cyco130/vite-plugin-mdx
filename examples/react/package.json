@@ -8,15 +8,15 @@
     "start": "vite preview"
   },
   "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@cyco130/vite-plugin-mdx": "2.2.0",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "5.0.2",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.3"
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "5.1.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
   }
 }
