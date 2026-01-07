@@ -3,14 +3,10 @@ import puppeteer, { ElementHandle } from "puppeteer";
 import path from "path";
 import fs from "fs";
 import { spawn, ChildProcess } from "child_process";
-import fetch from "node-fetch";
-import psTreeCb from "ps-tree";
-import { promisify } from "util";
-import { kill } from "process";
+import treeKill from "tree-kill-promise";
 
-const psTree = promisify(psTreeCb);
-
-const TEST_HOST = "http://localhost:5174";
+const PORT = 5173;
+const TEST_HOST = `http://localhost:${PORT}`;
 
 const browser = await puppeteer.launch({
   headless: true,
@@ -44,8 +40,8 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
   beforeAll(async () => {
     const command =
       env === "development"
-        ? "pnpm exec vite serve --strictPort --port 5174"
-        : "pnpm exec vite build && pnpm exec vite preview --strictPort --port 5174";
+        ? `pnpm exec vite serve --strictPort --port ${PORT}`
+        : `pnpm exec vite build && pnpm exec vite preview --strictPort --port ${PORT}`;
 
     cp = spawn(command, {
       shell: true,
@@ -56,13 +52,11 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
     // eslint-disable-next-line no-async-promise-executor
     await new Promise<void>(async (resolve, reject) => {
       cp!.on("error", (error) => {
-        cp = undefined;
         reject(error);
       });
 
       cp!.on("exit", (code) => {
         if (code !== 0) {
-          cp = undefined;
           reject(new Error(`Process exited with code ${code}`));
         }
       });
@@ -97,15 +91,15 @@ describe.each(cases)("$framework - $env", ({ framework, env }) => {
       return;
     }
 
-    const tree = await psTree(cp.pid);
-    const pids = [cp.pid, ...tree.map((p) => +p.PID)];
+    await treeKill(cp.pid);
 
-    for (const pid of pids) {
-      kill(+pid, "SIGINT");
+    if (cp.exitCode || !cp.pid) {
+      return;
     }
 
-    await new Promise((resolve) => {
+    await new Promise((resolve, reject) => {
       cp!.on("exit", resolve);
+      cp!.on("error", reject);
     });
   });
 
