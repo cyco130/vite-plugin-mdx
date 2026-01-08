@@ -8,3 +8,5 @@ echo -e ${WHITE}Updating package versions${NC}
 pnpm -r --filter=./packages/* exec -- bash -c "echo -e ${BLUE@Q}\$PNPM_PACKAGE_NAME${NC@Q}@${GREEN@Q}\`npm version --allow-same-version --no-git-tag-version $@\`${NC@Q}"
 echo -e ${WHITE}Updating dependency versions in examples${NC}
 pnpm -r --filter=./examples/* update --workspace --save-workspace-protocol=false @cyco130/vite-plugin-mdx
+sed -i.bak 's/workspace://g' ./examples/*/package.json
+rm ./examples/*/package.json.bak

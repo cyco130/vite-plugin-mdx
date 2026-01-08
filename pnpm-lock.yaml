@@ -48,7 +48,7 @@ importers:
         specifier: ^7.28.5
         version: 7.28.5
       "@cyco130/vite-plugin-mdx":
-        specifier: workspace:2.3.0
+        specifier: 2.3.0
         version: link:../../packages/vite-plugin-mdx
       "@preact/preset-vite":
         specifier: ^2.10.2
@@ -70,7 +70,7 @@ importers:
         version: 19.2.3(react@19.2.3)
     devDependencies:
       "@cyco130/vite-plugin-mdx":
-        specifier: workspace:2.3.0
+        specifier: 2.3.0
         version: link:../../packages/vite-plugin-mdx
       "@types/react":
         specifier: ^19.2.7
@@ -95,7 +95,7 @@ importers:
         version: 1.9.10
     devDependencies:
       "@cyco130/vite-plugin-mdx":
-        specifier: workspace:2.3.0
+        specifier: 2.3.0
         version: link:../../packages/vite-plugin-mdx
       solid-jsx:
         specifier: ^1.1.4
@@ -117,7 +117,7 @@ importers:
         version: 3.5.26(typescript@5.9.3)
     devDependencies:
       "@cyco130/vite-plugin-mdx":
-        specifier: workspace:2.3.0
+        specifier: 2.3.0
         version: link:../../packages/vite-plugin-mdx
       "@vitejs/plugin-vue":
         specifier: ^6.0.3
