@@ -12,7 +12,7 @@
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@cyco130/vite-plugin-mdx": "2.2.0",
+    "@cyco130/vite-plugin-mdx": "workspace:2.3.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "5.1.2",
