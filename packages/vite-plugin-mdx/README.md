@@ -17,8 +17,9 @@ In some cases it can interfere with Vite's dependency scanning.
 - [React](./examples/react) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/react))
 - [Preact](./examples/preact) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/preact))
 
-`@cyco130/vite-plugin-mdx` also supports Solid.js through the `solid-jsx` package:
+`@cyco130/vite-plugin-mdx` also supports Vue and Solid.js (through the `solid-jsx` package). But please note that using standard JSX might not be the most efficient way of using Markdown-based content in these frameworks. Also note that, on Vue, hot reloading works by reloading the containing component and not the MDX file itself.
 
+- [Vue](./examples/vue) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/vue))
 - [Solid](./examples/solid) ([StackBlitz](https://stackblitz.com/github/cyco130/vite-plugin-mdx/tree/main/examples/solid))
 
 ## Credits
