@@ -1,0 +1,19 @@
+{
+  "name": "example-solid-vite-plugin-mdx",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite serve",
+    "build": "vite build",
+    "start": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.26"
+  },
+  "devDependencies": {
+    "@cyco130/vite-plugin-mdx": "2.2.0",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
+  }
+}
