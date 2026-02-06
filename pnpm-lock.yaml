@@ -25,12 +25,12 @@ importers:
       "@types/node":
         specifier: ^20.19.32
         version: 20.19.32
+      kill-em-all:
+        specifier: ^0.0.3
+        version: 0.0.3
       puppeteer:
         specifier: ^24.37.1
         version: 24.37.1(typescript@5.9.3)
-      tree-kill-promise:
-        specifier: ^5.0.0
-        version: 5.0.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -3492,6 +3492,13 @@ packages:
         integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==,
       }
 
+  kill-em-all@0.0.3:
+    resolution:
+      {
+        integrity: sha512-jX5HJ35KprbV8LCIOmGizdAdndP1KeZd0H+l0St2Qtn4Qu6JpcKnhgkTImHzqiBiYTvTC1cm6Ei3ere7m1LjBg==,
+      }
+    hasBin: true
+
   kolorist@1.8.0:
     resolution:
       {
@@ -4916,13 +4923,6 @@ packages:
         integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==,
       }
     engines: { node: ">=8.0" }
-
-  tree-kill-promise@5.0.0:
-    resolution:
-      {
-        integrity: sha512-KHqu1wzZCXYhwE26pj+g49VRnpJ68rtaIr7ycosNpoAw8rwpZSOwek1l9M99wFfFbuEO6WFeXGla0MGlDCTSLQ==,
-      }
-    engines: { node: ">=22" }
 
   tree-kill@1.2.2:
     resolution:
@@ -7592,6 +7592,8 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
+  kill-em-all@0.0.3: {}
+
   kolorist@1.8.0: {}
 
   levn@0.4.1:
@@ -8732,10 +8734,6 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
-
-  tree-kill-promise@5.0.0:
-    dependencies:
-      tree-kill: 1.2.2
 
   tree-kill@1.2.2: {}
 
