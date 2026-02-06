@@ -3,7 +3,7 @@ import puppeteer, { ElementHandle } from "puppeteer";
 import path from "path";
 import fs from "fs";
 import { spawn, ChildProcess } from "child_process";
-import treeKill from "tree-kill-promise";
+import { launchAndTest, LaunchAndTestCleanupFunction } from "kill-em-all";
 
 const PORT = 5173;
 const TEST_HOST = `http://localhost:${PORT}`;
@@ -44,7 +44,7 @@ describe.each(cases)(
       framework.toLowerCase(),
     );
 
-    let cp: ChildProcess | undefined;
+    let kill: LaunchAndTestCleanupFunction | undefined;
 
     beforeAll(async () => {
       const command =
@@ -52,64 +52,17 @@ describe.each(cases)(
           ? `pnpm exec vite serve --strictPort --port ${PORT}`
           : `pnpm exec vite build && pnpm exec vite preview --strictPort --port ${PORT}`;
 
-      cp = spawn(command, {
+      const cp = spawn(command, {
         shell: true,
         stdio: "inherit",
         cwd: dir,
       });
 
-      // eslint-disable-next-line no-async-promise-executor
-      await new Promise<void>(async (resolve, reject) => {
-        cp!.on("error", (error) => {
-          reject(error);
-        });
-
-        cp!.on("exit", (code) => {
-          if (code !== 0) {
-            reject(new Error(`Process exited with code ${code}`));
-          }
-        });
-
-        for (;;) {
-          let doBreak = false;
-          await fetch(TEST_HOST)
-            .then(async (r) => {
-              if (r.status === 200) {
-                resolve();
-                doBreak = true;
-              }
-            })
-            .catch(() => {
-              // Ignore error
-            });
-
-          if (doBreak) {
-            break;
-          }
-
-          await new Promise((resolve) => setTimeout(resolve, 250));
-        }
-      }).catch((error) => {
-        console.error(error);
-        process.exit(1);
-      });
+      kill = await launchAndTest(cp, TEST_HOST);
     }, 60_000);
 
     afterAll(async () => {
-      if (!cp || cp.exitCode || !cp.pid) {
-        return;
-      }
-
-      await treeKill(cp.pid);
-
-      if (cp.exitCode || !cp.pid) {
-        return;
-      }
-
-      await new Promise((resolve, reject) => {
-        cp!.on("exit", resolve);
-        cp!.on("error", reject);
-      });
+      await kill?.();
     });
 
     test("renders MDX", async () => {
