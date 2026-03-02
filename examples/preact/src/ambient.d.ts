@@ -3,6 +3,6 @@
 import JSX = preact.JSX;
 
 declare module "*.mdx" {
-  const Component: preact.ComponentType<{ children?: never }>;
-  export default Component;
+	const Component: preact.ComponentType<{ children?: never }>;
+	export default Component;
 }

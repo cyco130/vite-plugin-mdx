@@ -5,18 +5,18 @@
     "dev": "pnpm -r --parallel --filter \"./packages/*\" run dev",
     "build": "pnpm -r --filter \"./packages/*\" run build",
     "prepare": "husky install",
+    "format": "oxfmt",
     "precommit": "lint-staged",
     "test": "pnpm run \"/^(ci|cq)$/\"",
     "cq": "pnpm run /^test:/",
     "ci": "cd ci && pnpm run ci",
     "test:packages": "pnpm -r --stream run test",
-    "test:prettier": "prettier --check --ignore-path .gitignore --ignore-unknown . '!pnpm-lock.yaml'",
-    "format": "prettier --ignore-path .gitignore --ignore-unknown . '!pnpm-lock.yaml' --write"
+    "test:format": "oxfmt --check"
   },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.3.1",
-    "prettier": "^3.8.1",
+    "oxfmt": "^0.36.0",
     "typescript": "^5.9.3"
   }
 }

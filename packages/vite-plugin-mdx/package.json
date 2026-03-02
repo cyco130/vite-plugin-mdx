@@ -1,13 +1,17 @@
 {
   "name": "@cyco130/vite-plugin-mdx",
   "version": "2.3.1",
-  "type": "module",
+  "description": "Vite plugin for using MDX",
+  "keywords": [
+    "mdx",
+    "vite"
+  ],
+  "license": "MIT",
+  "repository": "github:cyco130/vite-plugin-mdx",
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": "./dist/index.js"
-  },
+  "type": "module",
   "typesVersions": {
     "*": {
       "*": [
@@ -15,37 +19,33 @@
       ]
     }
   },
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "prepack": "rm -rf dist && pnpm build",
     "test": "pnpm test:typecheck && pnpm test:lint && pnpm test:package",
     "test:typecheck": "tsc -p tsconfig.json --noEmit",
     "test:lint": "eslint . --max-warnings 0 --ignore-pattern dist",
     "test:package": "publint --strict"
   },
-  "description": "Vite plugin for using MDX",
-  "license": "MIT",
-  "repository": "github:cyco130/vite-plugin-mdx",
-  "keywords": [
-    "vite",
-    "mdx"
-  ],
-  "peerDependencies": {
-    "vite": "3 || 4 || 5 || 6 || 7"
+  "dependencies": {
+    "@mdx-js/mdx": "^3.1.1",
+    "source-map": "^0.7.6",
+    "vfile": "^6.0.3"
   },
   "devDependencies": {
     "@cyco130/eslint-config": "^6.2.2",
     "@types/node": "^20.19.35",
     "eslint": "^10.0.2",
     "publint": "^0.3.18",
-    "tsup": "^8.5.1",
+    "tsdown": "0.21.0-beta.2",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
   },
-  "dependencies": {
-    "@mdx-js/mdx": "^3.1.1",
-    "source-map": "^0.7.6",
-    "vfile": "^6.0.3"
+  "peerDependencies": {
+    "vite": "3 || 4 || 5 || 6 || 7"
   }
 }
