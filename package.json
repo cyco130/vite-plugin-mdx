@@ -5,18 +5,18 @@
     "dev": "pnpm -r --parallel --filter \"./packages/*\" run dev",
     "build": "pnpm -r --filter \"./packages/*\" run build",
     "prepare": "husky install",
-    "format": "oxfmt",
+    "format": "prettier --write .",
     "precommit": "lint-staged",
     "test": "pnpm run \"/^(ci|cq)$/\"",
     "cq": "pnpm run /^test:/",
     "ci": "cd ci && pnpm run ci",
     "test:packages": "pnpm -r --stream run test",
-    "test:format": "oxfmt --check"
+    "test:format": "prettier --check ."
   },
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.3.1",
-    "oxfmt": "^0.36.0",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3"
   }
 }
