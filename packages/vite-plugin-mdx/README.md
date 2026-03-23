@@ -1,5 +1,7 @@
 # @cyco130/vite-plugin-mdx
 
+`@cyco130/vite-plugin-mdx` is a [Vite](https://vitejs.dev/) plugin for [MDX](https://mdxjs.com/). It is tested with React, Preact, Vue, and Solid but should work with any JSX implementation.
+
 > [!IMPORTANT]  
 > If you're on Vite 8 or later, you don't need this plugin. Use `@mdx-js/rollup` directly. In some cases you may have to force it to be processed before other plugins as follows:
 >
@@ -18,8 +20,6 @@
 > };
 > ```
 
-This is a plugin for using [MDX](https://mdxjs.com/) in [Vite](https://vitejs.dev/) applications. It is tested with React, Preact and Solid but should work with any JSX implementation.
-
 ## Why not [`@mdx-js/rollup`](https://mdxjs.com/packages/rollup/)?
 
 Before Vite version 8, Vite's dependency scanning could be interrupted because ESBuild doesn't understand MDX files. This plugin uses an additional ESBuild plugin to make sure dependency scanning works correctly.
@@ -28,7 +28,7 @@ However, if you're on Vite 8 or later, you can use `@mdx-js/rollup` directly. Se
 
 ## Why not [`vite-plugin-mdx`](https://github.com/brillout/vite-plugin-mdx)?
 
-`vite-plugin-mdx` is currently unmaintained and only supports MDX version 1 whereas `@cyco130/vite-plugin-mdx` supports MDX version 3.
+`vite-plugin-mdx` is currently unmaintained and only supports MDX version 1 whereas `@cyco130/vite-plugin-mdx` supports later MDX versions.
 
 ## Examples
 
