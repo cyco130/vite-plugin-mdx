@@ -1,12 +1,14 @@
 import type { CompileOptions } from "@mdx-js/mdx";
 import { Plugin, ResolvedConfig, createFilter, FilterPattern } from "vite";
-import { version } from "vite/package.json";
+import pkg from "vite/package.json" with { type: "json" };
 import { SourceMapGenerator } from "source-map";
 import fs from "node:fs";
 import { createFormatAwareProcessors } from "@mdx-js/mdx/internal-create-format-aware-processors";
 import { VFile } from "vfile";
 
-const IS_VITE_8_OR_LATER = parseInt(version.split(".")[0]!, 10) >= 8;
+const viteVersion = pkg.version;
+
+const IS_VITE_8_OR_LATER = parseInt(viteVersion.split(".")[0]!, 10) >= 8;
 
 export interface Options extends CompileOptions {
 	/**
