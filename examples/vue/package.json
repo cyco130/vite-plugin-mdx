@@ -14,6 +14,6 @@
     "@cyco130/vite-plugin-mdx": "2.3.1",
     "@vitejs/plugin-vue": "^6.0.5",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^8.0.1"
   }
 }

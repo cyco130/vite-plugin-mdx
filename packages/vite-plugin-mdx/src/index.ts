@@ -1,9 +1,14 @@
 import type { CompileOptions } from "@mdx-js/mdx";
 import { Plugin, ResolvedConfig, createFilter, FilterPattern } from "vite";
+import pkg from "vite/package.json" with { type: "json" };
 import { SourceMapGenerator } from "source-map";
 import fs from "node:fs";
 import { createFormatAwareProcessors } from "@mdx-js/mdx/internal-create-format-aware-processors";
 import { VFile } from "vfile";
+
+const viteVersion = pkg.version;
+
+const IS_VITE_8_OR_LATER = parseInt(viteVersion.split(".")[0]!, 10) >= 8;
 
 export interface Options extends CompileOptions {
 	/**
@@ -39,6 +44,11 @@ export function mdx(options: Options = {}): Plugin {
 		enforce: "pre",
 
 		config() {
+			if (IS_VITE_8_OR_LATER) {
+				// rolldown doesn't require the ESBuild plugin
+				return;
+			}
+
 			// A minimal ESBuild plugin to allow optimizedDeps scanning
 			const esbuildOptions: ResolvedConfig["optimizeDeps"]["esbuildOptions"] = {
 				plugins: [
@@ -61,13 +71,9 @@ export function mdx(options: Options = {}): Plugin {
 			};
 
 			return {
-				optimizeDeps: {
-					esbuildOptions,
-				},
+				optimizeDeps: { esbuildOptions },
 				ssr: {
-					optimizeDeps: {
-						esbuildOptions,
-					},
+					optimizeDeps: { esbuildOptions },
 				},
 			};
 		},
