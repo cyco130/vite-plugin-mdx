@@ -43,7 +43,11 @@ export function mdx(options: Options = {}): Plugin {
 				parseInt(this.meta.viteVersion.split(".")[0]!, 10) >= 8;
 
 			if (isVite8OrLater) {
-				// rolldown doesn't require the ESBuild plugin
+				this.warn(
+					"[@cyco130/vite-plugin-mdx] Vite 8 or later detected. You should use @mdx-js/rollup instead of this plugin.",
+				);
+
+				// Vite 8 doesn't require the ESBuild plugin for dependency scanning.
 				return;
 			}
 
