@@ -13,7 +13,7 @@
   "devDependencies": {
     "@cyco130/vite-plugin-mdx": "3.0.0",
     "solid-jsx": "^1.1.4",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "vite": "^8.0.1",
     "vite-plugin-solid": "^2.11.11"
   }
