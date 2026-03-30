@@ -8,13 +8,13 @@
     "start": "vite preview"
   },
   "dependencies": {
-    "solid-js": "^1.9.11"
+    "solid-js": "^1.9.12"
   },
   "devDependencies": {
     "@cyco130/vite-plugin-mdx": "3.0.0",
     "solid-jsx": "^1.1.4",
     "typescript": "^6.0.2",
-    "vite": "^8.0.1",
+    "vite": "^8.0.3",
     "vite-plugin-solid": "^2.11.11"
   }
 }
