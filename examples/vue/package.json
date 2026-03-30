@@ -8,12 +8,12 @@
     "start": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.30"
+    "vue": "^3.5.31"
   },
   "devDependencies": {
     "@cyco130/vite-plugin-mdx": "3.0.0",
     "@vitejs/plugin-vue": "^6.0.5",
     "typescript": "^6.0.2",
-    "vite": "^8.0.1"
+    "vite": "^8.0.3"
   }
 }
