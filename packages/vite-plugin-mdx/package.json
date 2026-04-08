@@ -37,14 +37,14 @@
     "vfile": "^6.0.3"
   },
   "devDependencies": {
-    "@cyco130/eslint-config": "^7.0.0",
-    "@types/node": "^20.19.37",
-    "esbuild": "^0.27.4",
-    "eslint": "^10.1.0",
+    "@cyco130/eslint-config": "^7.0.1",
+    "@types/node": "^20.19.39",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.2.0",
     "publint": "^0.3.18",
     "tsdown": "0.21.7",
     "typescript": "^6.0.2",
-    "vite": "^8.0.3"
+    "vite": "^8.0.7"
   },
   "peerDependencies": {
     "vite": "7 || 8"

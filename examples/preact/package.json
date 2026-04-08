@@ -8,12 +8,12 @@
     "start": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.29.0"
+    "preact": "^10.29.1"
   },
   "devDependencies": {
     "@cyco130/vite-plugin-mdx": "3.0.0",
     "@preact/preset-vite": "^2.10.5",
     "typescript": "^6.0.2",
-    "vite": "^8.0.3"
+    "vite": "^8.0.7"
   }
 }
