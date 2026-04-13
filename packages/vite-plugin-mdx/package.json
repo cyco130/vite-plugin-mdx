@@ -42,9 +42,9 @@
     "esbuild": "^0.28.0",
     "eslint": "^10.2.0",
     "publint": "^0.3.18",
-    "tsdown": "0.21.7",
+    "tsdown": "0.21.8",
     "typescript": "^6.0.2",
-    "vite": "^8.0.7"
+    "vite": "^8.0.8"
   },
   "peerDependencies": {
     "vite": "7 || 8"
