@@ -38,13 +38,13 @@
   },
   "devDependencies": {
     "@cyco130/eslint-config": "^7.0.1",
-    "@types/node": "^20.19.39",
+    "@types/node": "^20.19.41",
     "esbuild": "^0.28.0",
-    "eslint": "^10.2.0",
-    "publint": "^0.3.18",
-    "tsdown": "0.21.8",
-    "typescript": "^6.0.2",
-    "vite": "^8.0.8"
+    "eslint": "^10.4.0",
+    "publint": "^0.3.21",
+    "tsdown": "0.22.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.13"
   },
   "peerDependencies": {
     "vite": "7 || 8"
